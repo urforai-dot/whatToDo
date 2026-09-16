@@ -1,0 +1,673 @@
+{
+  "version": "1.0.0",
+  "project": "섹션 업무 대시보드",
+  "source_document": "개발요구사항문서.md",
+  "generated_at": "2026-09-17T00:00:00+09:00",
+  "unit_minutes": 30,
+  "statuses": {
+    "todo": "할 일",
+    "in_progress": "작업중",
+    "needs_review": "리뷰 필요",
+    "needs_decision": "사람의 판단 필요",
+    "waiting": "대기",
+    "done": "완료",
+    "cancelled": "취소"
+  },
+  "phases": {
+    "setup": "프로젝트 초기 설정",
+    "data-model": "데이터 모델",
+    "backend-api": "백엔드 API",
+    "auth": "사용자 식별",
+    "dashboard-ui": "대시보드 UI",
+    "task-crud-ui": "업무 추가/변경 UI",
+    "report-ui": "완료 업무 & 보고서",
+    "polish-qa": "폴리싱 & QA",
+    "deploy": "배포"
+  },
+  "tasks": [
+    {
+      "id": "T001",
+      "title": "Next.js 프로젝트 스캐폴딩",
+      "description": "App Router + TypeScript + Tailwind 기반으로 Next.js 프로젝트를 생성하고 기본 폴더 구조를 정리한다.",
+      "detail_doc": "tasks/T001.md",
+      "status": "todo",
+      "phase": "setup",
+      "order": 1,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [],
+      "tags": [
+        "setup"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-16T23:42:03.999Z"
+    },
+    {
+      "id": "T002",
+      "title": "shadcn/ui 초기 설정",
+      "description": "shadcn/ui CLI로 초기화하고 기본 테마(라이트/다크) 및 공통 컴포넌트를 설치한다.",
+      "detail_doc": "tasks/T002.md",
+      "status": "todo",
+      "phase": "setup",
+      "order": 2,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T001"
+      ],
+      "tags": [
+        "setup"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T003",
+      "title": "Vercel 프로젝트 연결 및 첫 배포",
+      "description": "vercel link로 프로젝트를 연결하고 최초 커밋을 프리뷰 배포하여 파이프라인을 확인한다.",
+      "detail_doc": "tasks/T003.md",
+      "status": "todo",
+      "phase": "setup",
+      "order": 3,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T001"
+      ],
+      "tags": [
+        "setup"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T004",
+      "title": "DB 프로비저닝 (Postgres)",
+      "description": "Vercel Marketplace를 통해 Postgres(Neon)를 연결하고 환경변수를 로컬/Vercel에 설정한다.",
+      "detail_doc": "tasks/T004.md",
+      "status": "todo",
+      "phase": "setup",
+      "order": 4,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T003"
+      ],
+      "tags": [
+        "setup"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T005",
+      "title": "ORM 설정 및 DB 연결 테스트",
+      "description": "Drizzle ORM을 설치하고 스키마 파일 구조를 잡은 뒤, 간단한 쿼리로 DB 연결을 확인한다.",
+      "detail_doc": "tasks/T005.md",
+      "status": "todo",
+      "phase": "setup",
+      "order": 5,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T004"
+      ],
+      "tags": [
+        "setup"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T006",
+      "title": "Task 데이터 모델 설계",
+      "description": "업무(Task) 테이블 스키마를 설계한다: 제목, 설명, 담당자, 상태, 우선순위, 시작/마감일, 예상소요시간, 완료보고서 등.",
+      "detail_doc": "tasks/T006.md",
+      "status": "todo",
+      "phase": "data-model",
+      "order": 6,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T005"
+      ],
+      "tags": [
+        "data-model"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T007",
+      "title": "User(섹션원) 데이터 모델 및 시드",
+      "description": "섹션원 10명에 대한 사용자 테이블(이름, 식별자)을 설계하고 시드 데이터를 작성한다.",
+      "detail_doc": "tasks/T007.md",
+      "status": "todo",
+      "phase": "data-model",
+      "order": 7,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T005"
+      ],
+      "tags": [
+        "data-model"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T008",
+      "title": "마이그레이션 작성 및 적용",
+      "description": "Task/User 스키마에 대한 마이그레이션 파일을 생성하고 DB에 적용한다.",
+      "detail_doc": "tasks/T008.md",
+      "status": "todo",
+      "phase": "data-model",
+      "order": 8,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T006",
+        "T007"
+      ],
+      "tags": [
+        "data-model"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T009",
+      "title": "샘플 업무 시드 스크립트 작성/실행",
+      "description": "테스트용 샘플 업무 데이터를 여러 상태/담당자로 시드하여 개발 중 확인 가능하게 한다.",
+      "detail_doc": "tasks/T009.md",
+      "status": "todo",
+      "phase": "data-model",
+      "order": 9,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T008"
+      ],
+      "tags": [
+        "data-model"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T010",
+      "title": "업무 목록 조회 API",
+      "description": "GET /api/tasks 구현: 상태/담당자/우선순위 필터와 정렬 옵션을 지원한다.",
+      "detail_doc": "tasks/T010.md",
+      "status": "todo",
+      "phase": "backend-api",
+      "order": 10,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T009"
+      ],
+      "tags": [
+        "backend-api"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T011",
+      "title": "업무 생성 API",
+      "description": "POST /api/tasks 구현: 입력 검증 포함 업무 생성 처리.",
+      "detail_doc": "tasks/T011.md",
+      "status": "todo",
+      "phase": "backend-api",
+      "order": 11,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T009"
+      ],
+      "tags": [
+        "backend-api"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T012",
+      "title": "업무 수정 API (상태/우선순위 포함)",
+      "description": "PATCH /api/tasks/:id 구현: 상태 변경, 우선순위 변경, 담당자 변경을 포함한다.",
+      "detail_doc": "tasks/T012.md",
+      "status": "todo",
+      "phase": "backend-api",
+      "order": 12,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T010"
+      ],
+      "tags": [
+        "backend-api"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T013",
+      "title": "업무 상세/보고서 조회 API",
+      "description": "GET /api/tasks/:id 구현: 업무 상세 정보와 완료 보고서를 함께 반환한다.",
+      "detail_doc": "tasks/T013.md",
+      "status": "todo",
+      "phase": "backend-api",
+      "order": 13,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T010"
+      ],
+      "tags": [
+        "backend-api"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T014",
+      "title": "담당자별 워크로드 집계 API",
+      "description": "GET /api/workload 구현: 담당자별 진행 중 업무 수/예상 소요시간 합계를 계산해 반환한다.",
+      "detail_doc": "tasks/T014.md",
+      "status": "todo",
+      "phase": "backend-api",
+      "order": 14,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T010"
+      ],
+      "tags": [
+        "backend-api"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T015",
+      "title": "간단 사용자 식별(로그인) 구현",
+      "description": "섹션원 목록에서 본인을 선택하는 방식의 간단한 로그인/세션 처리를 구현한다 (복잡한 인증 없이 신뢰 기반).",
+      "detail_doc": "tasks/T015.md",
+      "status": "todo",
+      "phase": "auth",
+      "order": 15,
+      "estimated_minutes": 30,
+      "priority": "high",
+      "assignee": null,
+      "dependencies": [
+        "T007"
+      ],
+      "tags": [
+        "auth"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T016",
+      "title": "대시보드 레이아웃/네비게이션",
+      "description": "공통 레이아웃(헤더, 네비게이션)과 대시보드 페이지 뼈대를 구성한다.",
+      "detail_doc": "tasks/T016.md",
+      "status": "todo",
+      "phase": "dashboard-ui",
+      "order": 16,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T002",
+        "T003"
+      ],
+      "tags": [
+        "dashboard-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T017",
+      "title": "업무 목록/보드 뷰 컴포넌트",
+      "description": "상태별로 업무를 그룹핑해 보여주는 보드 또는 리스트 뷰 컴포넌트를 구현한다.",
+      "detail_doc": "tasks/T017.md",
+      "status": "todo",
+      "phase": "dashboard-ui",
+      "order": 17,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T010",
+        "T016"
+      ],
+      "tags": [
+        "dashboard-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T018",
+      "title": "우선순위 정렬/강조 UI",
+      "description": "우선순위 높은 업무를 상단 노출 및 시각적으로 강조하는 UI를 구현한다.",
+      "detail_doc": "tasks/T018.md",
+      "status": "todo",
+      "phase": "dashboard-ui",
+      "order": 18,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T017"
+      ],
+      "tags": [
+        "dashboard-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T019",
+      "title": "담당자별 워크로드 요약 위젯",
+      "description": "담당자별 현재 업무 부하를 한눈에 보여주는 위젯을 구현한다.",
+      "detail_doc": "tasks/T019.md",
+      "status": "todo",
+      "phase": "dashboard-ui",
+      "order": 19,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T014",
+        "T016"
+      ],
+      "tags": [
+        "dashboard-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T020",
+      "title": "필터(담당자/상태/기간) UI",
+      "description": "대시보드에서 담당자, 상태, 기간으로 업무를 필터링하는 UI를 구현한다.",
+      "detail_doc": "tasks/T020.md",
+      "status": "todo",
+      "phase": "dashboard-ui",
+      "order": 20,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T017"
+      ],
+      "tags": [
+        "dashboard-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T021",
+      "title": "업무 추가 폼 UI",
+      "description": "제목/설명/담당자/우선순위/일정을 입력하는 업무 추가 폼 UI를 구현한다.",
+      "detail_doc": "tasks/T021.md",
+      "status": "todo",
+      "phase": "task-crud-ui",
+      "order": 21,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T016"
+      ],
+      "tags": [
+        "task-crud-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T022",
+      "title": "업무 추가 폼 - API 연동",
+      "description": "추가 폼을 생성 API와 연동하고 유효성 검사/에러 처리를 구현한다.",
+      "detail_doc": "tasks/T022.md",
+      "status": "todo",
+      "phase": "task-crud-ui",
+      "order": 22,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T011",
+        "T021"
+      ],
+      "tags": [
+        "task-crud-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T023",
+      "title": "업무 상태/우선순위 변경 UI",
+      "description": "보드/리스트에서 업무 상태나 우선순위를 바로 변경할 수 있는 UI(드롭다운 또는 드래그)를 구현한다.",
+      "detail_doc": "tasks/T023.md",
+      "status": "todo",
+      "phase": "task-crud-ui",
+      "order": 23,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T012",
+        "T017"
+      ],
+      "tags": [
+        "task-crud-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T024",
+      "title": "완료 업무 목록 페이지",
+      "description": "완료된 업무만 모아 보여주는 목록 페이지를 구현한다.",
+      "detail_doc": "tasks/T024.md",
+      "status": "todo",
+      "phase": "report-ui",
+      "order": 24,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T010",
+        "T016"
+      ],
+      "tags": [
+        "report-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T025",
+      "title": "업무 상세/보고서 뷰 페이지",
+      "description": "업무를 클릭하면 상세 정보와 완료 보고서를 보여주는 페이지를 구현한다.",
+      "detail_doc": "tasks/T025.md",
+      "status": "todo",
+      "phase": "report-ui",
+      "order": 25,
+      "estimated_minutes": 30,
+      "priority": "low",
+      "assignee": null,
+      "dependencies": [
+        "T013",
+        "T024"
+      ],
+      "tags": [
+        "report-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T026",
+      "title": "완료 보고서 작성/편집 UI",
+      "description": "담당자가 업무를 완료 처리할 때 요약 보고서를 작성/수정할 수 있는 UI를 구현한다.",
+      "detail_doc": "tasks/T026.md",
+      "status": "todo",
+      "phase": "report-ui",
+      "order": 26,
+      "estimated_minutes": 30,
+      "priority": "low",
+      "assignee": null,
+      "dependencies": [
+        "T012",
+        "T025"
+      ],
+      "tags": [
+        "report-ui"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T027",
+      "title": "반응형 스타일 점검",
+      "description": "모바일/데스크탑 주요 화면의 반응형 레이아웃을 점검하고 수정한다.",
+      "detail_doc": "tasks/T027.md",
+      "status": "todo",
+      "phase": "polish-qa",
+      "order": 27,
+      "estimated_minutes": 30,
+      "priority": "low",
+      "assignee": null,
+      "dependencies": [
+        "T017",
+        "T021",
+        "T025"
+      ],
+      "tags": [
+        "polish-qa"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T028",
+      "title": "빈 상태/에러 상태 처리",
+      "description": "데이터 없음, API 에러 등 예외 상황에 대한 UI 처리를 추가한다.",
+      "detail_doc": "tasks/T028.md",
+      "status": "todo",
+      "phase": "polish-qa",
+      "order": 28,
+      "estimated_minutes": 30,
+      "priority": "low",
+      "assignee": null,
+      "dependencies": [
+        "T017",
+        "T022"
+      ],
+      "tags": [
+        "polish-qa"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T029",
+      "title": "핵심 시나리오 수동 QA",
+      "description": "4대 핵심 시나리오(접속→우선순위/워크로드 확인→업무 추가→완료 업무 확인)를 처음부터 끝까지 수동으로 점검한다.",
+      "detail_doc": "tasks/T029.md",
+      "status": "todo",
+      "phase": "polish-qa",
+      "order": 29,
+      "estimated_minutes": 30,
+      "priority": "low",
+      "assignee": null,
+      "dependencies": [
+        "T015",
+        "T018",
+        "T019",
+        "T022",
+        "T026"
+      ],
+      "tags": [
+        "polish-qa"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    },
+    {
+      "id": "T030",
+      "title": "프로덕션 배포 및 최종 점검",
+      "description": "Vercel 프로덕션 배포를 진행하고 실제 도메인에서 최종 점검한다.",
+      "detail_doc": "tasks/T030.md",
+      "status": "todo",
+      "phase": "deploy",
+      "order": 30,
+      "estimated_minutes": 30,
+      "priority": "low",
+      "assignee": null,
+      "dependencies": [
+        "T029"
+      ],
+      "tags": [
+        "deploy"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T00:00:00+09:00",
+      "updated_at": "2026-09-17T00:00:00+09:00"
+    }
+  ]
+}
