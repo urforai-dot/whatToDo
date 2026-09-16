@@ -1,0 +1,6 @@
+{
+  "maxLines": 300,
+  "warnThresholdPct": 85,
+  "codeExtensions": [".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs"],
+  "lintBuildExtensions": [".js", ".jsx", ".ts", ".tsx", ".mjs", ".cjs", ".css", ".scss"]
+}
