@@ -30,7 +30,7 @@
       "title": "Next.js 프로젝트 스캐폴딩",
       "description": "App Router + TypeScript + Tailwind 기반으로 Next.js 프로젝트를 생성하고 기본 폴더 구조를 정리한다.",
       "detail_doc": "tasks/T001.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "setup",
       "order": 1,
       "estimated_minutes": 30,
@@ -42,7 +42,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-16T23:42:03.999Z"
+      "updated_at": "2026-09-17T02:55:54.145Z"
     },
     {
       "id": "T002",
