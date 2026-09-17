@@ -112,7 +112,7 @@
       "title": "ORM 설정 및 DB 연결 테스트",
       "description": "Drizzle ORM을 설치하고 스키마 파일 구조를 잡은 뒤, 간단한 쿼리로 DB 연결을 확인한다.",
       "detail_doc": "tasks/T005.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "setup",
       "order": 5,
       "estimated_minutes": 30,
@@ -126,7 +126,7 @@
       ],
       "blocked_reason": "Drizzle client/config 작성 완료. DB 연결 테스트는 T004(Supabase 연결) 이후 가능.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T07:17:05.242Z"
+      "updated_at": "2026-09-17T07:22:24.097Z"
     },
     {
       "id": "T006",
@@ -175,7 +175,7 @@
       "title": "마이그레이션 작성 및 적용",
       "description": "Task/User 스키마에 대한 마이그레이션 파일을 생성하고 DB에 적용한다.",
       "detail_doc": "tasks/T008.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "data-model",
       "order": 8,
       "estimated_minutes": 30,
@@ -190,14 +190,14 @@
       ],
       "blocked_reason": "drizzle-kit generate로 마이그레이션 SQL 생성 완료(drizzle/0000, 0001). 실제 DB 적용(migrate)은 T004 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:28:36.558Z"
+      "updated_at": "2026-09-17T07:22:25.261Z"
     },
     {
       "id": "T009",
       "title": "샘플 업무 시드 스크립트 작성/실행",
       "description": "테스트용 샘플 업무 데이터를 여러 상태/담당자로 시드하여 개발 중 확인 가능하게 한다.",
       "detail_doc": "tasks/T009.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "data-model",
       "order": 9,
       "estimated_minutes": 30,
@@ -211,7 +211,7 @@
       ],
       "blocked_reason": "seed 스크립트(src/db/seed.ts, npm run db:seed) 작성 완료. 실행은 T004 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:28:37.713Z"
+      "updated_at": "2026-09-17T07:22:26.381Z"
     },
     {
       "id": "T010",
