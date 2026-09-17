@@ -366,7 +366,7 @@
       "title": "업무 목록/보드 뷰 컴포넌트",
       "description": "상태별로 업무를 그룹핑해 보여주는 보드 또는 리스트 뷰 컴포넌트를 구현한다.",
       "detail_doc": "tasks/T017.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "dashboard-ui",
       "order": 17,
       "estimated_minutes": 30,
@@ -381,14 +381,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:33:44.035Z"
     },
     {
       "id": "T018",
       "title": "우선순위 정렬/강조 UI",
       "description": "우선순위 높은 업무를 상단 노출 및 시각적으로 강조하는 UI를 구현한다.",
       "detail_doc": "tasks/T018.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "dashboard-ui",
       "order": 18,
       "estimated_minutes": 30,
@@ -402,14 +402,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:33:45.283Z"
     },
     {
       "id": "T019",
       "title": "담당자별 워크로드 요약 위젯",
       "description": "담당자별 현재 업무 부하를 한눈에 보여주는 위젯을 구현한다.",
       "detail_doc": "tasks/T019.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "dashboard-ui",
       "order": 19,
       "estimated_minutes": 30,
@@ -424,7 +424,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:33:46.473Z"
     },
     {
       "id": "T020",
