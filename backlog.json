@@ -752,6 +752,27 @@
       "blocked_reason": null,
       "created_at": "2026-09-17T12:37:10.754Z",
       "updated_at": "2026-09-17T13:12:56.950Z"
+    },
+    {
+      "id": "T035",
+      "title": "달력 바에 담당자명 표시",
+      "description": "",
+      "detail_doc": "tasks/T035.md",
+      "status": "todo",
+      "phase": "misc",
+      "order": 35,
+      "estimated_minutes": 30,
+      "priority": "medium",
+      "assignee": null,
+      "dependencies": [
+        "T033"
+      ],
+      "tags": [
+        "misc"
+      ],
+      "blocked_reason": null,
+      "created_at": "2026-09-17T13:25:13.052Z",
+      "updated_at": "2026-09-17T13:25:13.054Z"
     }
   ]
 }
