@@ -91,7 +91,7 @@
       "title": "DB 프로비저닝 (Postgres)",
       "description": "Supabase MCP(또는 Supabase 대시보드/CLI)로 프로젝트를 만들고 Postgres 연결 정보와 API 키를 로컬/Vercel 환경변수에 설정한다.",
       "detail_doc": "tasks/T004.md",
-      "status": "waiting",
+      "status": "in_progress",
       "phase": "setup",
       "order": 4,
       "estimated_minutes": 30,
@@ -105,7 +105,7 @@
       ],
       "blocked_reason": "Supabase MCP(/mcp, https://mcp.supabase.com/mcp) 또는 Supabase 계정 인증이 필요 - 사용자 액션 대기. 연결되면 프로젝트 생성/환경변수 설정 진행.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:19:46.586Z"
+      "updated_at": "2026-09-17T07:16:04.751Z"
     },
     {
       "id": "T005",
