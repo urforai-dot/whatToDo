@@ -55,13 +55,13 @@ export function TaskListWidget({
             <span className={cn("min-w-0 flex-1 truncate text-[12.5px] font-medium", overdue && "text-destructive")}>
               {t.title}
             </span>
-            <span className="text-muted-foreground w-[70px] flex-none text-right text-[11px] tabular-nums">
+            <span className="text-muted-foreground hidden w-[70px] flex-none text-right text-[11px] tabular-nums sm:inline">
               {t.model ?? "—"}
             </span>
-            <span className="text-muted-foreground w-[92px] flex-none truncate text-[11px]">
+            <span className="text-muted-foreground hidden w-[92px] flex-none truncate text-[11px] md:inline">
               {t.owners.length ? t.owners.map((o) => o.name).join(", ") : "미배정"}
             </span>
-            <span className="font-heading text-primary w-[42px] flex-none text-[11px] font-semibold tracking-wide">
+            <span className="font-heading text-primary hidden w-[42px] flex-none text-[11px] font-semibold tracking-wide sm:inline">
               {STATUS_LABEL[t.status]}
             </span>
             <span

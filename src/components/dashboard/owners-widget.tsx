@@ -1,10 +1,17 @@
 import type { WorkloadEntry } from "@/lib/dashboard-types";
 import { shortDate, todayIso } from "@/lib/date-status";
-import { Widget } from "@/components/dashboard/widget";
+import { Widget, EmptyRow } from "@/components/dashboard/widget";
 import { cn } from "@/lib/utils";
 
 export function OwnersWidget({ workload }: { workload: WorkloadEntry[] }) {
   const today = todayIso();
+  if (workload.length === 0) {
+    return (
+      <Widget title="담당자별 현황 · Owners" count="0명">
+        <EmptyRow>등록된 섹션원이 없습니다.</EmptyRow>
+      </Widget>
+    );
+  }
   return (
     <Widget title="담당자별 현황 · Owners" count={`${workload.length}명`}>
       <div className="grid grid-cols-1 sm:grid-cols-2">

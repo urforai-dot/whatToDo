@@ -28,7 +28,7 @@ export function DueSoonWidget({ tasks }: { tasks: Task[] }) {
             <span className={cn("min-w-0 flex-1 truncate text-[12.5px]", danger && "text-destructive")}>
               {t.title}
             </span>
-            <span className="text-muted-foreground flex-none text-[11px]">
+            <span className="text-muted-foreground hidden max-w-20 flex-none truncate text-[11px] sm:inline">
               {t.owners.length ? t.owners.map((o) => o.name).join(", ") : "미배정"}
             </span>
             <span className="text-muted-foreground flex-none text-[11px] tabular-nums">{shortDate(t.dueDate)}</span>

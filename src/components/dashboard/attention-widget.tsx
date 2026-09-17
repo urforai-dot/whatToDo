@@ -21,7 +21,7 @@ export function AttentionWidget({ tasks }: { tasks: Task[] }) {
             {reasonFor(t)}
           </span>
           <span className="min-w-0 flex-1 truncate text-xs">{t.title}</span>
-          <span className="text-muted-foreground flex-none text-[10.5px]">
+          <span className="text-muted-foreground hidden max-w-20 flex-none truncate text-[10.5px] sm:inline">
             {t.owners.length ? t.owners.map((o) => o.name).join(", ") : "—"}
           </span>
         </div>
