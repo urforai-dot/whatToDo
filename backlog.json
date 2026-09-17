@@ -431,7 +431,7 @@
       "title": "필터(담당자/상태/기간) UI",
       "description": "대시보드에서 담당자, 상태, 기간으로 업무를 필터링하는 UI를 구현한다.",
       "detail_doc": "tasks/T020.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "dashboard-ui",
       "order": 20,
       "estimated_minutes": 30,
@@ -445,14 +445,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:55:06.431Z"
     },
     {
       "id": "T021",
       "title": "업무 추가 폼 UI",
       "description": "제목/설명/담당자/우선순위/일정을 입력하는 업무 추가 폼 UI를 구현한다.",
       "detail_doc": "tasks/T021.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "task-crud-ui",
       "order": 21,
       "estimated_minutes": 30,
@@ -466,14 +466,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:55:07.508Z"
     },
     {
       "id": "T022",
       "title": "업무 추가 폼 - API 연동",
       "description": "추가 폼을 생성 API와 연동하고 유효성 검사/에러 처리를 구현한다.",
       "detail_doc": "tasks/T022.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "task-crud-ui",
       "order": 22,
       "estimated_minutes": 30,
@@ -488,14 +488,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:55:08.685Z"
     },
     {
       "id": "T023",
       "title": "업무 상태/우선순위 변경 UI",
       "description": "보드/리스트에서 업무 상태나 우선순위를 바로 변경할 수 있는 UI(드롭다운 또는 드래그)를 구현한다.",
       "detail_doc": "tasks/T023.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "task-crud-ui",
       "order": 23,
       "estimated_minutes": 30,
@@ -510,14 +510,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:55:09.873Z"
     },
     {
       "id": "T024",
       "title": "완료 업무 목록 페이지",
       "description": "완료된 업무만 모아 보여주는 목록 페이지를 구현한다.",
       "detail_doc": "tasks/T024.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "report-ui",
       "order": 24,
       "estimated_minutes": 30,
@@ -532,14 +532,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:55:11.205Z"
     },
     {
       "id": "T025",
       "title": "업무 상세/보고서 뷰 페이지",
       "description": "업무를 클릭하면 상세 정보와 완료 보고서를 보여주는 페이지를 구현한다.",
       "detail_doc": "tasks/T025.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "report-ui",
       "order": 25,
       "estimated_minutes": 30,
@@ -554,14 +554,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:55:12.473Z"
     },
     {
       "id": "T026",
       "title": "완료 보고서 작성/편집 UI",
       "description": "담당자가 업무를 완료 처리할 때 요약 보고서를 작성/수정할 수 있는 UI를 구현한다.",
       "detail_doc": "tasks/T026.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "report-ui",
       "order": 26,
       "estimated_minutes": 30,
@@ -576,7 +576,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T04:55:13.573Z"
     },
     {
       "id": "T027",
