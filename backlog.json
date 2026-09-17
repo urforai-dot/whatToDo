@@ -758,7 +758,7 @@
       "title": "달력 바에 담당자명 표시",
       "description": "",
       "detail_doc": "tasks/T035.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "misc",
       "order": 35,
       "estimated_minutes": 30,
@@ -772,7 +772,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T13:25:13.052Z",
-      "updated_at": "2026-09-17T13:25:23.304Z"
+      "updated_at": "2026-09-17T13:25:46.949Z"
     }
   ]
 }

@@ -33,6 +33,10 @@ function buildMonthCells(year: number, month: number): DayCell[] {
   });
 }
 
+function ownerLabel(task: Task): string {
+  return task.owners.length ? task.owners.map((o) => o.name).join(", ") : "미배정";
+}
+
 function chunkWeeks(cells: DayCell[]): DayCell[][] {
   const weeks: DayCell[][] = [];
   for (let i = 0; i < cells.length; i += 7) weeks.push(cells.slice(i, i + 7));
@@ -179,8 +183,8 @@ export function CalendarWidget({
                       key={lt.task.id}
                       type="button"
                       onClick={() => onSelect(lt.task.id)}
-                      title={lt.task.title}
-                      aria-label={`${lt.task.title} · ${lt.start} ~ ${lt.end}`}
+                      title={`${lt.task.title} · ${ownerLabel(lt.task)}`}
+                      aria-label={`${lt.task.title} · ${ownerLabel(lt.task)} · ${lt.start} ~ ${lt.end}`}
                       style={{ gridColumn: `${colStart + 1} / span ${colSpan}`, gridRow: lt.lane + 1 }}
                       className={cn(
                         "truncate px-1 text-left text-[10px] leading-[1.05rem] text-foreground",
@@ -188,7 +192,7 @@ export function CalendarWidget({
                         isOverdue(lt.task.dueDate, lt.task.status) && "ring-destructive ring-1 ring-inset"
                       )}
                     >
-                      {lt.task.title}
+                      {lt.task.title} · {ownerLabel(lt.task)}
                     </button>
                   ))}
                 </div>
