@@ -133,7 +133,7 @@
       "title": "Task 데이터 모델 설계",
       "description": "업무(Task) 테이블 스키마를 설계한다: 제목, 설명, 담당자, 상태, 우선순위, 시작/마감일, 예상소요시간, 완료보고서 등.",
       "detail_doc": "tasks/T006.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "data-model",
       "order": 6,
       "estimated_minutes": 30,
@@ -147,14 +147,14 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:22:03.778Z"
+      "updated_at": "2026-09-17T03:27:57.212Z"
     },
     {
       "id": "T007",
       "title": "User(섹션원) 데이터 모델 및 시드",
       "description": "섹션원 10명에 대한 사용자 테이블(이름, 식별자)을 설계하고 시드 데이터를 작성한다.",
       "detail_doc": "tasks/T007.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "data-model",
       "order": 7,
       "estimated_minutes": 30,
@@ -168,7 +168,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:22:04.800Z"
+      "updated_at": "2026-09-17T03:27:58.254Z"
     },
     {
       "id": "T008",
