@@ -695,7 +695,7 @@
       "title": "업무 시작일 설정/수정 UI",
       "description": "",
       "detail_doc": "tasks/T032.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "misc",
       "order": 32,
       "estimated_minutes": 30,
@@ -709,7 +709,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T12:37:09.111Z",
-      "updated_at": "2026-09-17T12:37:09.114Z"
+      "updated_at": "2026-09-17T12:37:21.578Z"
     },
     {
       "id": "T033",
