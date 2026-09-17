@@ -674,7 +674,7 @@
       "title": "업무 목록 아래 월간 달력 위젯 추가",
       "description": "",
       "detail_doc": "tasks/T031.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "misc",
       "order": 31,
       "estimated_minutes": 30,
@@ -688,7 +688,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T11:49:18.937Z",
-      "updated_at": "2026-09-17T11:49:29.993Z"
+      "updated_at": "2026-09-17T12:26:26.842Z"
     }
   ]
 }
