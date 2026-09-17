@@ -91,7 +91,7 @@
       "title": "DB 프로비저닝 (Postgres)",
       "description": "Supabase MCP(또는 Supabase 대시보드/CLI)로 프로젝트를 만들고 Postgres 연결 정보와 API 키를 로컬/Vercel 환경변수에 설정한다.",
       "detail_doc": "tasks/T004.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "setup",
       "order": 4,
       "estimated_minutes": 30,
@@ -105,7 +105,7 @@
       ],
       "blocked_reason": "로컬 .env.local + DB 접속 확인 완료. Vercel env 등록만 남음 - vercel env add가 auto-mode 시크릿 쓰기 정책에 막혀 사용자 승인 필요.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T07:16:51.842Z"
+      "updated_at": "2026-09-17T07:52:10.785Z"
     },
     {
       "id": "T005",
