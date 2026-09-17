@@ -716,7 +716,7 @@
       "title": "달력을 간트 바 뷰로 재구현 (우선순위 색상/겹침 정렬)",
       "description": "",
       "detail_doc": "tasks/T033.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "misc",
       "order": 33,
       "estimated_minutes": 30,
@@ -730,7 +730,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T12:37:09.913Z",
-      "updated_at": "2026-09-17T12:37:09.916Z"
+      "updated_at": "2026-09-17T12:44:06.313Z"
     },
     {
       "id": "T034",
