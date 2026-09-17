@@ -8,9 +8,9 @@
 
 같은 훅이 코드/CSS 저장 시 `npm run lint --if-present`, `npm run build --if-present`를 실행하고 실패하면 작업을 막는다. `package.json`이 없는 지금(T001 이전)은 안내만 뜨고 건너뛴다 — Next.js 스캐폴딩(T001) 이후 자동으로 켜진다.
 
-## 스택 (T001~T005에서 확정될 예정)
+## 스택
 
-기본값은 Next.js App Router + TypeScript + Tailwind + shadcn/ui, DB는 Vercel Marketplace의 Postgres(Neon) + Drizzle ORM이다 (`backlog.json`의 `setup` phase 참고). 다른 스택으로 바뀌면 이 문서와 `backlog.json`의 관련 task 설명을 함께 갱신한다.
+Next.js App Router + TypeScript + Tailwind + shadcn/ui. DB는 **Supabase**(Postgres) + Drizzle ORM으로 확정 (2026-09-17 사용자 지시, `.claude/rules/skills.md`의 "DB: Supabase" 참고 — Neon/Vercel Marketplace 경로 아님). 다른 스택으로 또 바뀌면 이 문서와 `backlog.json`의 관련 task 설명을 함께 갱신한다.
 
 ## 일반 원칙 (Claude Code 공통 정책과 동일)
 
