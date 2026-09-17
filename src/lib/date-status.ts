@@ -1,5 +1,12 @@
 export function todayIso() {
-  return new Date().toISOString().slice(0, 10);
+  // toISOString() gives the UTC calendar date, which is the *previous* day
+  // from 00:00-08:59 KST — read local Y/M/D instead so "today" matches the
+  // viewer's wall clock (this runs client-side, in the browser's own TZ).
+  const now = new Date();
+  const y = now.getFullYear();
+  const m = String(now.getMonth() + 1).padStart(2, "0");
+  const d = String(now.getDate()).padStart(2, "0");
+  return `${y}-${m}-${d}`;
 }
 
 export function isOverdue(dueDate: string | null, status: string) {

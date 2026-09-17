@@ -17,7 +17,7 @@ export function DashboardBoard() {
     return <div className="text-muted-foreground flex flex-1 items-center justify-center text-sm">불러오는 중...</div>;
   }
 
-  if (error) {
+  if (error && !tasks) {
     return (
       <div className="flex flex-1 flex-col items-center justify-center gap-3 px-4 text-center">
         <p role="alert" aria-live="polite" className="text-destructive text-sm">
@@ -35,6 +35,16 @@ export function DashboardBoard() {
 
   return (
     <div className="flex flex-1 flex-col overflow-hidden">
+      {error && (
+        <div className="bg-destructive/10 border-destructive/40 flex items-center gap-3 border-b px-5 py-2">
+          <p role="alert" aria-live="polite" className="text-destructive flex-1 text-xs">
+            {error} — 화면에 보이는 내용은 마지막으로 불러온 데이터입니다.
+          </p>
+          <button type="button" onClick={reload} className="text-accent flex-none text-xs underline underline-offset-2">
+            다시 시도
+          </button>
+        </div>
+      )}
       <div className="grid flex-1 grid-cols-1 gap-4 overflow-auto p-5 lg:grid-cols-[1.1fr_1fr]">
         <div className="flex flex-col gap-4">
           {selectedTaskId === null ? (

@@ -1,6 +1,6 @@
 "use client";
 
-import { useCallback, useEffect, useState } from "react";
+import { useCallback, useEffect, useRef, useState } from "react";
 import type { Owner, Task, WorkloadEntry } from "@/lib/dashboard-types";
 
 async function fetchJson<T>(url: string, init?: RequestInit): Promise<T> {
@@ -19,7 +19,21 @@ export function useDashboardData() {
   const [error, setError] = useState<string | null>(null);
   const [loading, setLoading] = useState(true);
 
+  // Ignore a response if a newer reload() started after it, or if we've
+  // unmounted — otherwise two overlapping reloads (e.g. add-task fires one
+  // while a background refresh is still in flight) can let the slower one
+  // land last and overwrite fresher state with stale data.
+  const requestSeq = useRef(0);
+  const mounted = useRef(true);
+  useEffect(() => {
+    mounted.current = true;
+    return () => {
+      mounted.current = false;
+    };
+  }, []);
+
   const reload = useCallback(async () => {
+    const seq = ++requestSeq.current;
     setLoading(true);
     setError(null);
     try {
@@ -28,20 +42,21 @@ export function useDashboardData() {
         fetchJson<WorkloadEntry[]>("/api/workload"),
         fetchJson<Owner[]>("/api/users"),
       ]);
+      if (!mounted.current || seq !== requestSeq.current) return;
       setTasks(t);
       setWorkload(w);
       setUsers(u);
     } catch (err) {
+      if (!mounted.current || seq !== requestSeq.current) return;
+      // Keep whatever data is already loaded — a transient error shouldn't
+      // blank out a working view the user might be in the middle of.
       setError(err instanceof Error ? err.message : "데이터를 불러오지 못했습니다.");
     } finally {
-      setLoading(false);
+      if (mounted.current && seq === requestSeq.current) setLoading(false);
     }
   }, []);
 
   useEffect(() => {
-    // Initial fetch on mount — state updates happen inside reload()'s
-    // async continuation (after await), not synchronously in this effect
-    // body, but the lint rule can't see through that indirection.
     // eslint-disable-next-line react-hooks/set-state-in-effect
     reload();
   }, [reload]);

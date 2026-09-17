@@ -3,10 +3,12 @@ import { dueLabel, shortDate, todayIso, dayDiff } from "@/lib/date-status";
 import { Widget, EmptyRow } from "@/components/dashboard/widget";
 import { cn } from "@/lib/utils";
 
+const DUE_SOON_WINDOW_DAYS = 14;
+
 export function DueSoonWidget({ tasks }: { tasks: Task[] }) {
   const today = todayIso();
   const rows = tasks
-    .filter((t) => t.status !== "done" && t.dueDate)
+    .filter((t) => t.status !== "done" && t.dueDate && dayDiff(today, t.dueDate) <= DUE_SOON_WINDOW_DAYS)
     .slice()
     .sort((a, b) => a.dueDate!.localeCompare(b.dueDate!));
 

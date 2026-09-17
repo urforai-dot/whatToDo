@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import type { Owner, TaskDetail } from "@/lib/dashboard-types";
 import { STATUS_LABEL } from "@/lib/dashboard-types";
 import { TASK_STATUSES } from "@/db/schema";
@@ -32,13 +32,22 @@ export function TaskDetailPanel({
   const [submitting, setSubmitting] = useState(false);
   const [updating, setUpdating] = useState(false);
 
+  // Guards against an older load() landing after a newer one (e.g. a slow
+  // response to the initial load resolving after a subsequent patch's
+  // reload) and repainting stale detail/owners over fresher state.
+  const requestSeq = useRef(0);
+
   async function load() {
+    const seq = ++requestSeq.current;
     setError(null);
     try {
       const res = await fetch(`/api/tasks/${taskId}`);
       if (!res.ok) throw new Error("업무를 불러오지 못했습니다.");
-      setDetail(await res.json());
+      const data = await res.json();
+      if (seq !== requestSeq.current) return;
+      setDetail(data);
     } catch (err) {
+      if (seq !== requestSeq.current) return;
       setError(err instanceof Error ? err.message : "업무를 불러오지 못했습니다.");
     }
   }

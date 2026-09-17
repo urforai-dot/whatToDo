@@ -18,13 +18,23 @@ export default async function DashboardLayout({ children }: { children: React.Re
   try {
     [user] = await db.select({ name: users.name }).from(users).where(eq(users.id, userId));
   } catch {
-    // DB not reachable yet (e.g. before Supabase is connected) — still
-    // render the shell rather than crashing the whole route.
     dbUnreachable = true;
   }
 
-  if (!dbUnreachable && !user) redirect("/login");
-  const userName = user?.name ?? "연결 안 됨";
+  // Fail closed: without the DB we can't verify this session actually
+  // belongs to a real user, so don't render the dashboard as if it does
+  // (a forged/stale cookie would otherwise sail through as "연결 안 됨").
+  if (dbUnreachable) {
+    return (
+      <div className="text-muted-foreground flex min-h-screen flex-col items-center justify-center gap-2 text-sm">
+        <p role="alert" aria-live="polite" className="text-destructive">
+          서비스 연결에 문제가 있습니다. 잠시 후 다시 시도해주세요.
+        </p>
+      </div>
+    );
+  }
 
-  return <DashboardShell userName={userName}>{children}</DashboardShell>;
+  if (!user) redirect("/login");
+
+  return <DashboardShell userName={user.name}>{children}</DashboardShell>;
 }

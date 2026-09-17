@@ -1,5 +1,6 @@
 "use client";
 
+import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { cn } from "@/lib/utils";
 
@@ -30,7 +31,7 @@ export function DashboardRail() {
         }
         const active = pathname === item.href;
         return (
-          <a
+          <Link
             key={item.label}
             href={item.href}
             title={item.title}
@@ -42,7 +43,7 @@ export function DashboardRail() {
             )}
           >
             {item.label}
-          </a>
+          </Link>
         );
       })}
     </nav>
