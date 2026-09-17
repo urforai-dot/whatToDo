@@ -89,7 +89,7 @@
     {
       "id": "T004",
       "title": "DB 프로비저닝 (Postgres)",
-      "description": "Vercel Marketplace를 통해 Postgres(Neon)를 연결하고 환경변수를 로컬/Vercel에 설정한다.",
+      "description": "Supabase MCP(또는 Supabase 대시보드/CLI)로 프로젝트를 만들고 Postgres 연결 정보와 API 키를 로컬/Vercel 환경변수에 설정한다.",
       "detail_doc": "tasks/T004.md",
       "status": "todo",
       "phase": "setup",
@@ -105,7 +105,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T02:39:31.613Z"
     },
     {
       "id": "T005",
