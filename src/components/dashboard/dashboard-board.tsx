@@ -67,7 +67,12 @@ export function DashboardBoard() {
           {selectedTaskId === null ? (
             <TaskListWidget tasks={allTasks} selectedTaskId={selectedTaskId} onSelect={setSelectedTaskId} />
           ) : (
-            <TaskDetailPanel taskId={selectedTaskId} onBack={() => setSelectedTaskId(null)} onChanged={reload} />
+            <TaskDetailPanel
+              taskId={selectedTaskId}
+              onBack={() => setSelectedTaskId(null)}
+              onChanged={reload}
+              onOpenTask={setSelectedTaskId}
+            />
           )}
           <CalendarWidget tasks={allTasks} onSelect={setSelectedTaskId} />
         </div>

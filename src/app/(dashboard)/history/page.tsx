@@ -22,7 +22,12 @@ export default function HistoryPage() {
   if (selectedTaskId !== null) {
     return (
       <div className="max-w-2xl p-5">
-        <TaskDetailPanel taskId={selectedTaskId} onBack={() => setSelectedTaskId(null)} onChanged={reload} />
+        <TaskDetailPanel
+          taskId={selectedTaskId}
+          onBack={() => setSelectedTaskId(null)}
+          onChanged={reload}
+          onOpenTask={setSelectedTaskId}
+        />
       </div>
     );
   }
