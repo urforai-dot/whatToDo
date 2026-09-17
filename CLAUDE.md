@@ -14,6 +14,7 @@
 - `.claude/rules/git-workflow.md` — 브랜치, 자동 커밋/푸시
 - `.claude/rules/code-style.md` — 줄수 제한, lint/build 강제, 스택
 - `.claude/rules/subagents.md` — `backlog-briefer` / `adversarial-reviewer` 쓰는 시점
+- `.claude/rules/skills.md` — 단계별로 어떤 스킬(vitest, drizzle, vercel:* 등)을 먼저 로드할지
 
 ## 한 줄 요약 규칙
 
@@ -22,3 +23,5 @@
 3. task를 시작하면 상태를 `in_progress`로, 판단이 필요하면 `needs_decision`으로 바꾸고 사용자에게 묻는다. 임의 추측으로 진행하지 않는다.
 4. 코드 파일은 300줄을 넘기지 않는다, lint/build는 훅이 강제한다.
 5. task를 시작하기 전 `backlog-briefer`로, 의미 있는 변경 직후 `adversarial-reviewer`로 점검한다 (둘 다 수동 호출 — 자동 hook 아님).
+6. 작업 단계에 맞는 스킬이 있으면 손으로 짜기 전에 먼저 로드한다 — `.claude/rules/skills.md` 참고.
+7. 사용자가 "커밋해줘"라고 하면 커밋 후 바로 push까지 한다 (`.claude/rules/git-workflow.md`).
