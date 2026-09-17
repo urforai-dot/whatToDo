@@ -218,7 +218,7 @@
       "title": "업무 목록 조회 API",
       "description": "GET /api/tasks 구현: 상태/담당자/우선순위 필터와 정렬 옵션을 지원한다.",
       "detail_doc": "tasks/T010.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "backend-api",
       "order": 10,
       "estimated_minutes": 30,
@@ -232,14 +232,14 @@
       ],
       "blocked_reason": "API 라우트 코드 작성 완료 (빌드/타입체크 통과). 실 데이터로 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:40:38.289Z"
+      "updated_at": "2026-09-17T07:42:44.523Z"
     },
     {
       "id": "T011",
       "title": "업무 생성 API",
       "description": "POST /api/tasks 구현: 입력 검증 포함 업무 생성 처리.",
       "detail_doc": "tasks/T011.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "backend-api",
       "order": 11,
       "estimated_minutes": 30,
@@ -253,14 +253,14 @@
       ],
       "blocked_reason": "API 라우트 코드 작성 완료 (빌드/타입체크 통과). 실 데이터로 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:40:39.520Z"
+      "updated_at": "2026-09-17T07:42:46.093Z"
     },
     {
       "id": "T012",
       "title": "업무 수정 API (상태/우선순위 포함)",
       "description": "PATCH /api/tasks/:id 구현: 상태 변경, 우선순위 변경, 담당자 변경을 포함한다.",
       "detail_doc": "tasks/T012.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "backend-api",
       "order": 12,
       "estimated_minutes": 30,
@@ -274,14 +274,14 @@
       ],
       "blocked_reason": "API 라우트 코드 작성 완료 (빌드/타입체크 통과). 실 데이터로 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:40:40.820Z"
+      "updated_at": "2026-09-17T07:42:47.477Z"
     },
     {
       "id": "T013",
       "title": "업무 상세/보고서 조회 API",
       "description": "GET /api/tasks/:id 구현: 업무 상세 정보와 완료 보고서를 함께 반환한다.",
       "detail_doc": "tasks/T013.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "backend-api",
       "order": 13,
       "estimated_minutes": 30,
@@ -295,14 +295,14 @@
       ],
       "blocked_reason": "API 라우트 코드 작성 완료 (빌드/타입체크 통과). 실 데이터로 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:40:42.063Z"
+      "updated_at": "2026-09-17T07:42:48.765Z"
     },
     {
       "id": "T014",
       "title": "담당자별 워크로드 집계 API",
       "description": "GET /api/workload 구현: 담당자별 진행 중 업무 수/예상 소요시간 합계를 계산해 반환한다.",
       "detail_doc": "tasks/T014.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "backend-api",
       "order": 14,
       "estimated_minutes": 30,
@@ -316,14 +316,14 @@
       ],
       "blocked_reason": "API 라우트 코드 작성 완료 (빌드/타입체크 통과). 실 데이터로 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:40:43.349Z"
+      "updated_at": "2026-09-17T07:42:50.005Z"
     },
     {
       "id": "T015",
       "title": "간단 사용자 식별(로그인) 구현",
       "description": "섹션원 목록에서 본인을 선택하는 방식의 간단한 로그인/세션 처리를 구현한다 (복잡한 인증 없이 신뢰 기반).",
       "detail_doc": "tasks/T015.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "auth",
       "order": 15,
       "estimated_minutes": 30,
@@ -337,7 +337,7 @@
       ],
       "blocked_reason": "로그인 페이지/API/세션 쿠키 작성 완료. 실제 사용자 목록으로 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:45:42.977Z"
+      "updated_at": "2026-09-17T07:42:51.238Z"
     },
     {
       "id": "T016",
@@ -366,7 +366,7 @@
       "title": "업무 목록/보드 뷰 컴포넌트",
       "description": "상태별로 업무를 그룹핑해 보여주는 보드 또는 리스트 뷰 컴포넌트를 구현한다.",
       "detail_doc": "tasks/T017.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "dashboard-ui",
       "order": 17,
       "estimated_minutes": 30,
@@ -381,14 +381,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T06:10:04.414Z"
+      "updated_at": "2026-09-17T07:42:52.621Z"
     },
     {
       "id": "T018",
       "title": "우선순위 정렬/강조 UI",
       "description": "우선순위 높은 업무를 상단 노출 및 시각적으로 강조하는 UI를 구현한다.",
       "detail_doc": "tasks/T018.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "dashboard-ui",
       "order": 18,
       "estimated_minutes": 30,
@@ -402,14 +402,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:09.801Z"
+      "updated_at": "2026-09-17T07:42:54.309Z"
     },
     {
       "id": "T019",
       "title": "담당자별 워크로드 요약 위젯",
       "description": "담당자별 현재 업무 부하를 한눈에 보여주는 위젯을 구현한다.",
       "detail_doc": "tasks/T019.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "dashboard-ui",
       "order": 19,
       "estimated_minutes": 30,
@@ -424,7 +424,7 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:10.977Z"
+      "updated_at": "2026-09-17T07:42:56.036Z"
     },
     {
       "id": "T020",
@@ -452,7 +452,7 @@
       "title": "업무 추가 폼 UI",
       "description": "제목/설명/담당자/우선순위/일정을 입력하는 업무 추가 폼 UI를 구현한다.",
       "detail_doc": "tasks/T021.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "task-crud-ui",
       "order": 21,
       "estimated_minutes": 30,
@@ -466,14 +466,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:12.085Z"
+      "updated_at": "2026-09-17T07:42:57.442Z"
     },
     {
       "id": "T022",
       "title": "업무 추가 폼 - API 연동",
       "description": "추가 폼을 생성 API와 연동하고 유효성 검사/에러 처리를 구현한다.",
       "detail_doc": "tasks/T022.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "task-crud-ui",
       "order": 22,
       "estimated_minutes": 30,
@@ -488,14 +488,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:13.264Z"
+      "updated_at": "2026-09-17T07:42:58.740Z"
     },
     {
       "id": "T023",
       "title": "업무 상태/우선순위 변경 UI",
       "description": "보드/리스트에서 업무 상태나 우선순위를 바로 변경할 수 있는 UI(드롭다운 또는 드래그)를 구현한다.",
       "detail_doc": "tasks/T023.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "task-crud-ui",
       "order": 23,
       "estimated_minutes": 30,
@@ -510,14 +510,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:14.367Z"
+      "updated_at": "2026-09-17T07:42:59.998Z"
     },
     {
       "id": "T024",
       "title": "완료 업무 목록 페이지",
       "description": "완료된 업무만 모아 보여주는 목록 페이지를 구현한다.",
       "detail_doc": "tasks/T024.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "report-ui",
       "order": 24,
       "estimated_minutes": 30,
@@ -532,14 +532,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:15.575Z"
+      "updated_at": "2026-09-17T07:43:01.261Z"
     },
     {
       "id": "T025",
       "title": "업무 상세/보고서 뷰 페이지",
       "description": "업무를 클릭하면 상세 정보와 완료 보고서를 보여주는 페이지를 구현한다.",
       "detail_doc": "tasks/T025.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "report-ui",
       "order": 25,
       "estimated_minutes": 30,
@@ -554,14 +554,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:16.801Z"
+      "updated_at": "2026-09-17T07:43:02.613Z"
     },
     {
       "id": "T026",
       "title": "완료 보고서 작성/편집 UI",
       "description": "담당자가 업무를 완료 처리할 때 요약 보고서를 작성/수정할 수 있는 UI를 구현한다.",
       "detail_doc": "tasks/T026.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "report-ui",
       "order": 26,
       "estimated_minutes": 30,
@@ -576,14 +576,14 @@
       ],
       "blocked_reason": "UI/API 연동 코드 작성 완료 (빌드/타입체크 통과, 로그인 에러 처리는 브라우저로 확인). 실 데이터로 전체 동작 검증은 T004(Supabase 연결) 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:24:17.970Z"
+      "updated_at": "2026-09-17T07:43:03.870Z"
     },
     {
       "id": "T027",
       "title": "반응형 스타일 점검",
       "description": "모바일/데스크탑 주요 화면의 반응형 레이아웃을 점검하고 수정한다.",
       "detail_doc": "tasks/T027.md",
-      "status": "waiting",
+      "status": "done",
       "phase": "polish-qa",
       "order": 27,
       "estimated_minutes": 30,
@@ -599,7 +599,7 @@
       ],
       "blocked_reason": "코드 레벨 수정 완료. 실제 좁은 뷰포트 스크린샷 검증은 도구 한계로 못함 (tasks/T027.md 참고).",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T05:35:37.065Z"
+      "updated_at": "2026-09-17T07:43:05.100Z"
     },
     {
       "id": "T028",
