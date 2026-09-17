@@ -5,7 +5,9 @@ import type { Owner, TaskDetail } from "@/lib/dashboard-types";
 import { STATUS_LABEL } from "@/lib/dashboard-types";
 import { TASK_STATUSES } from "@/db/schema";
 import { Widget, EmptyRow } from "@/components/dashboard/widget";
+import { LinkedText } from "@/components/dashboard/linked-text";
 import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { cn } from "@/lib/utils";
 import {
@@ -20,10 +22,12 @@ export function TaskDetailPanel({
   taskId,
   onBack,
   onChanged,
+  onOpenTask,
 }: {
   taskId: number;
   onBack: () => void;
   onChanged: () => void;
+  onOpenTask: (id: number) => void;
 }) {
   const [detail, setDetail] = useState<TaskDetail | null>(null);
   const [allUsers, setAllUsers] = useState<Owner[]>([]);
@@ -31,6 +35,13 @@ export function TaskDetailPanel({
   const [commentBody, setCommentBody] = useState("");
   const [submitting, setSubmitting] = useState(false);
   const [updating, setUpdating] = useState(false);
+  // A native date input reports value:"" for every intermediate keystroke
+  // until all three segments are filled, not just on an intentional clear —
+  // patching straight from onChange would null the field out mid-type. Draft
+  // state holds what's on screen; the PATCH only fires once the user leaves
+  // the field (see startDate/dueDate onBlur below).
+  const [startDraft, setStartDraft] = useState<string | null>(null);
+  const [dueDraft, setDueDraft] = useState<string | null>(null);
 
   // Guards against an older load() landing after a newer one (e.g. a slow
   // response to the initial load resolving after a subsequent patch's
@@ -55,6 +66,8 @@ export function TaskDetailPanel({
   useEffect(() => {
     // eslint-disable-next-line react-hooks/set-state-in-effect
     setDetail(null); // clear stale detail while the new task's fetch resolves
+    setStartDraft(null);
+    setDueDraft(null);
     load();
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [taskId]);
@@ -116,7 +129,10 @@ export function TaskDetailPanel({
   }
 
   return (
-    <Widget title={detail?.title ?? "업무 상세"} count={detail ? `${detail.comments.length}건` : undefined}>
+    <Widget
+      title={detail ? `#${detail.id} ${detail.title}` : "업무 상세"}
+      count={detail ? `${detail.comments.length}건` : undefined}
+    >
       <button type="button" onClick={onBack} className="text-accent px-3.5 pt-2 text-left text-[11px] hover:underline">
         ← 전체 목록으로
       </button>
@@ -161,6 +177,35 @@ export function TaskDetailPanel({
               ))}
             </SelectContent>
           </Select>
+          <Input
+            type="date"
+            aria-label="시작일"
+            value={startDraft ?? detail.startDate ?? ""}
+            disabled={updating}
+            onChange={(e) => setStartDraft(e.target.value)}
+            onBlur={() => {
+              if (startDraft !== null && startDraft !== (detail.startDate ?? "")) {
+                patchTask({ startDate: startDraft || null });
+              }
+              setStartDraft(null);
+            }}
+            className="w-[9.5rem]"
+          />
+          <span className="text-muted-foreground text-xs">→</span>
+          <Input
+            type="date"
+            aria-label="마감일"
+            value={dueDraft ?? detail.dueDate ?? ""}
+            disabled={updating}
+            onChange={(e) => setDueDraft(e.target.value)}
+            onBlur={() => {
+              if (dueDraft !== null && dueDraft !== (detail.dueDate ?? "")) {
+                patchTask({ dueDate: dueDraft || null });
+              }
+              setDueDraft(null);
+            }}
+            className="w-[9.5rem]"
+          />
         </div>
       )}
 
@@ -199,7 +244,9 @@ export function TaskDetailPanel({
           <div className="text-muted-foreground mb-0.5 text-[10px] tracking-wide uppercase">
             {c.authorName} · {c.createdAt.slice(0, 16).replace("T", " ")}
           </div>
-          <div className="text-[12.5px] leading-relaxed">{c.body}</div>
+          <div className="text-[12.5px] leading-relaxed">
+            <LinkedText text={c.body} onOpenTask={onOpenTask} />
+          </div>
         </div>
       ))}
 

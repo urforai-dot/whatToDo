@@ -7,19 +7,24 @@ import { Input } from "@/components/ui/input";
 const DATE_RE = /^\d{4}-\d{2}-\d{2}$/;
 
 // Positional slash-parsing is ambiguous when a middle field is skipped
-// (e.g. "title / model / 2026-09-30" meant to skip owner) — a trailing
-// segment that looks like a date is treated as the due date regardless
-// of how many segments came before it, instead of always reading index 3.
+// (e.g. "title / model / 2026-09-30" meant to skip owner) — trailing
+// segments that look like dates are read from the end regardless of how
+// many segments came before them, instead of always reading fixed indices.
+// One trailing date = due date only; two = start date then due date.
 function parseTaskInput(raw: string) {
   const segments = raw.split("/").map((s) => s.trim());
   const title = segments[0] ?? "";
   const rest = segments.slice(1);
   let dueDate: string | undefined;
+  let startDate: string | undefined;
   if (rest.length > 0 && DATE_RE.test(rest[rest.length - 1])) {
     dueDate = rest.pop();
+    if (rest.length > 0 && DATE_RE.test(rest[rest.length - 1])) {
+      startDate = rest.pop();
+    }
   }
   const model = rest[0] || undefined;
-  return { title, model, dueDate };
+  return { title, model, startDate, dueDate };
 }
 
 export function AddTaskBar({ onAdded }: { onAdded: () => void }) {
@@ -39,7 +44,12 @@ export function AddTaskBar({ onAdded }: { onAdded: () => void }) {
       const res = await fetch("/api/tasks", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ title: parsed.title, model: parsed.model, dueDate: parsed.dueDate }),
+        body: JSON.stringify({
+          title: parsed.title,
+          model: parsed.model,
+          startDate: parsed.startDate,
+          dueDate: parsed.dueDate,
+        }),
       });
       if (!res.ok) {
         const data = await res.json().catch(() => ({}));
@@ -60,7 +70,7 @@ export function AddTaskBar({ onAdded }: { onAdded: () => void }) {
         <Input
           value={value}
           onChange={(e) => setValue(e.target.value)}
-          placeholder="업무 추가 — 업무명 / 모델명 / 완료예상일(YYYY-MM-DD) · 담당자는 등록 후 상세에서 배정"
+          placeholder="업무 추가 — 업무명 / 모델명 / [시작일 /] 완료예상일(YYYY-MM-DD) · 담당자는 등록 후 상세에서 배정"
           aria-label="새 업무 정보"
           autoComplete="off"
           className="min-w-45 flex-1"
@@ -71,7 +81,8 @@ export function AddTaskBar({ onAdded }: { onAdded: () => void }) {
       </div>
       {parsed && (
         <p className="text-muted-foreground text-[11px]">
-          제목: {parsed.title || "—"} · 모델: {parsed.model ?? "—"} · 마감일: {parsed.dueDate ?? "—"}
+          제목: {parsed.title || "—"} · 모델: {parsed.model ?? "—"} · 시작일: {parsed.startDate ?? "—"} · 마감일:{" "}
+          {parsed.dueDate ?? "—"}
         </p>
       )}
       {error && (

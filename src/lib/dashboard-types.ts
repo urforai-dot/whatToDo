@@ -40,3 +40,16 @@ export const STATUS_LABEL: Record<TaskStatus, string> = {
   hold: "홀드",
   done: "완료",
 };
+
+// Task list priority badge: readability/attention over hue-consistency with
+// the calendar. P1 uses the destructive (warm) token so it visibly alarms
+// against the app's otherwise all-blue palette; lower priorities step down
+// through accent, then secondary, then fade to plain muted text so the eye
+// lands on what's urgent first.
+export const PRIORITY_COLOR_CLASS: Record<number, string> = {
+  1: "bg-destructive text-background",
+  2: "bg-accent text-foreground",
+  3: "bg-accent/55 text-foreground",
+  4: "bg-secondary text-secondary-foreground",
+  5: "text-muted-foreground",
+};
