@@ -1,4 +1,4 @@
-import { STATUS_LABEL, type Task } from "@/lib/dashboard-types";
+import { PRIORITY_COLOR_CLASS, STATUS_LABEL, type Task } from "@/lib/dashboard-types";
 import { isOverdue, shortDate } from "@/lib/date-status";
 import { Widget, EmptyRow } from "@/components/dashboard/widget";
 import { cn } from "@/lib/utils";
@@ -51,7 +51,14 @@ export function TaskListWidget({
               t.id === selectedTaskId && "bg-primary/10"
             )}
           >
-            <span className="font-heading text-primary w-6 flex-none text-[13px] font-semibold">P{t.priority}</span>
+            <span
+              className={cn(
+                "font-heading flex h-5 w-7 flex-none items-center justify-center text-[12px] font-semibold",
+                PRIORITY_COLOR_CLASS[t.priority] ?? PRIORITY_COLOR_CLASS[3]
+              )}
+            >
+              P{t.priority}
+            </span>
             <span className={cn("min-w-0 flex-1 truncate text-[12.5px] font-medium", overdue && "text-destructive")}>
               {t.title}
             </span>

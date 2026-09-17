@@ -9,9 +9,10 @@ import { cn } from "@/lib/utils";
 const WEEKDAY_LABELS = ["일", "월", "화", "수", "목", "금", "토"];
 const MAX_LANES = 3;
 
-// Sequential ramp (one hue, light→dark = low→high priority) rather than a
-// categorical palette — priority is an ordinal severity, not a set of
-// unrelated identities, so distinct hues per level would misencode it.
+// Own ramp, separate from the task list badge: bars sit stacked in lanes and
+// an overdue bar gets a destructive ring on top, so bar fill stays in the
+// blue family — reusing the list's alarming red fill here would swallow
+// that ring and make overdue bars unreadable.
 const PRIORITY_BAR_CLASS: Record<number, string> = {
   1: "bg-accent/90",
   2: "bg-accent/72",
@@ -169,7 +170,16 @@ export function CalendarWidget({
                       !cell.inMonth && cell.iso !== today && "opacity-40"
                     )}
                   >
-                    <span className="text-muted-foreground text-[10px] tabular-nums">{cell.day}</span>
+                    <span
+                      className={cn(
+                        "inline-flex h-4 w-4 items-center justify-center text-[10px] tabular-nums",
+                        cell.iso === today
+                          ? "bg-primary text-primary-foreground rounded-full font-semibold"
+                          : "text-muted-foreground"
+                      )}
+                    >
+                      {cell.day}
+                    </span>
                   </div>
                 ))}
               </div>
@@ -188,7 +198,7 @@ export function CalendarWidget({
                       style={{ gridColumn: `${colStart + 1} / span ${colSpan}`, gridRow: lt.lane + 1 }}
                       className={cn(
                         "truncate px-1 text-left text-[10px] leading-[1.05rem] text-foreground",
-                        PRIORITY_BAR_CLASS[lt.task.priority],
+                        PRIORITY_BAR_CLASS[lt.task.priority] ?? PRIORITY_BAR_CLASS[3],
                         isOverdue(lt.task.dueDate, lt.task.status) && "ring-destructive ring-1 ring-inset"
                       )}
                     >
