@@ -112,7 +112,7 @@
       "title": "ORM 설정 및 DB 연결 테스트",
       "description": "Drizzle ORM을 설치하고 스키마 파일 구조를 잡은 뒤, 간단한 쿼리로 DB 연결을 확인한다.",
       "detail_doc": "tasks/T005.md",
-      "status": "waiting",
+      "status": "in_progress",
       "phase": "setup",
       "order": 5,
       "estimated_minutes": 30,
@@ -126,7 +126,7 @@
       ],
       "blocked_reason": "Drizzle client/config 작성 완료. DB 연결 테스트는 T004(Supabase 연결) 이후 가능.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:28:35.506Z"
+      "updated_at": "2026-09-17T07:17:05.242Z"
     },
     {
       "id": "T006",
