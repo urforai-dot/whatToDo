@@ -25,12 +25,31 @@ function truncate(str, max) {
   return str.length > max ? str.slice(0, max) + "\n... (truncated)" : str;
 }
 
+function sleep(ms) {
+  Atomics.wait(new Int32Array(new SharedArrayBuffer(4)), 0, 0, ms);
+}
+
 function runNpmScript(name) {
   return spawnSync("npm", ["run", name, "--if-present"], {
     cwd: ROOT,
     encoding: "utf8",
     shell: process.platform === "win32",
   });
+}
+
+// This project lives under a OneDrive-synced folder, which occasionally
+// holds a file handle open (EPERM/EBUSY on unlink/rename in .next) during
+// `next build`. That's a transient OS/sync race, not a real build error —
+// retry a couple of times before treating it as a genuine failure.
+function runNpmScriptWithRetry(name, attempts) {
+  let res = runNpmScript(name);
+  for (let i = 1; i < attempts && res.status !== 0; i++) {
+    const out = (res.stdout || "") + (res.stderr || "");
+    if (!/EPERM|EBUSY/.test(out)) break;
+    sleep(1500);
+    res = runNpmScript(name);
+  }
+  return res;
 }
 
 function main() {
@@ -70,7 +89,7 @@ function main() {
           `lint 실패:\n${truncate(lintRes.stdout + lintRes.stderr, 3000)}`
         );
       }
-      const buildRes = runNpmScript("build");
+      const buildRes = runNpmScriptWithRetry("build", 3);
       if (buildRes.status !== 0) {
         blockReasons.push(
           `build 실패:\n${truncate(buildRes.stdout + buildRes.stderr, 3000)}`

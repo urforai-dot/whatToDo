@@ -49,7 +49,7 @@
       "title": "shadcn/ui 초기 설정",
       "description": "shadcn/ui CLI로 초기화하고 기본 테마(라이트/다크) 및 공통 컴포넌트를 설치한다.",
       "detail_doc": "tasks/T002.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "setup",
       "order": 2,
       "estimated_minutes": 30,
@@ -63,7 +63,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T03:03:30.002Z"
+      "updated_at": "2026-09-17T03:16:28.142Z"
     },
     {
       "id": "T003",
