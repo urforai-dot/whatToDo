@@ -37,17 +37,28 @@ function runNpmScript(name) {
   });
 }
 
+function cleanNextDir() {
+  try {
+    fs.rmSync(path.join(ROOT, ".next"), { recursive: true, force: true });
+  } catch {
+    // best-effort; a leftover .next just means the next build attempt
+    // may hit the same transient lock and retry again
+  }
+}
+
 // This project lives under a OneDrive-synced folder, which occasionally
-// holds a file handle open (EPERM/EBUSY on unlink/rename in .next) during
-// `next build`. That's a transient OS/sync race, not a real build error —
-// retry a couple of times before treating it as a genuine failure.
-function runNpmScriptWithRetry(name, attempts) {
-  let res = runNpmScript(name);
+// holds a file handle open (EPERM/EBUSY on unlink/rename inside .next)
+// during `next build`'s incremental-output cleanup. That's a transient
+// OS/sync race, not a real build error — wipe .next and retry a couple
+// of times (full rebuild) before treating it as a genuine failure.
+function buildWithRetry(attempts) {
+  let res = runNpmScript("build");
   for (let i = 1; i < attempts && res.status !== 0; i++) {
     const out = (res.stdout || "") + (res.stderr || "");
     if (!/EPERM|EBUSY/.test(out)) break;
-    sleep(1500);
-    res = runNpmScript(name);
+    cleanNextDir();
+    sleep(1000);
+    res = runNpmScript("build");
   }
   return res;
 }
@@ -89,7 +100,7 @@ function main() {
           `lint 실패:\n${truncate(lintRes.stdout + lintRes.stderr, 3000)}`
         );
       }
-      const buildRes = runNpmScriptWithRetry("build", 3);
+      const buildRes = buildWithRetry(3);
       if (buildRes.status !== 0) {
         blockReasons.push(
           `build 실패:\n${truncate(buildRes.stdout + buildRes.stderr, 3000)}`

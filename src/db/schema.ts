@@ -23,6 +23,7 @@ export const tasks = pgTable(
   {
     id: bigint("id", { mode: "number" }).generatedAlwaysAsIdentity().primaryKey(),
     title: text("title").notNull(),
+    description: text("description"),
     model: text("model"),
     status: text("status", { enum: TASK_STATUSES }).notNull().default("planned"),
     priority: integer("priority").notNull().default(3),
