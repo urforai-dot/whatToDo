@@ -737,7 +737,7 @@
       "title": "코멘트에서 #업무번호로 다른 업무 참조/링크",
       "description": "",
       "detail_doc": "tasks/T034.md",
-      "status": "todo",
+      "status": "in_progress",
       "phase": "misc",
       "order": 34,
       "estimated_minutes": 30,
@@ -751,7 +751,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T12:37:10.754Z",
-      "updated_at": "2026-09-17T12:37:10.757Z"
+      "updated_at": "2026-09-17T12:52:12.432Z"
     }
   ]
 }
