@@ -1,0 +1,55 @@
+"use client";
+
+import { useState } from "react";
+import { useDashboardData } from "@/components/dashboard/use-dashboard-data";
+import { TaskListWidget } from "@/components/dashboard/task-list-widget";
+import { TaskDetailPanel } from "@/components/dashboard/task-detail-panel";
+import { DueSoonWidget } from "@/components/dashboard/due-soon-widget";
+import { OwnersWidget } from "@/components/dashboard/owners-widget";
+import { AttentionWidget } from "@/components/dashboard/attention-widget";
+import { AddTaskBar } from "@/components/dashboard/add-task-bar";
+
+export function DashboardBoard() {
+  const { tasks, workload, error, loading, reload } = useDashboardData();
+  const [selectedTaskId, setSelectedTaskId] = useState<number | null>(null);
+
+  if (loading && !tasks) {
+    return <div className="text-muted-foreground flex flex-1 items-center justify-center text-sm">불러오는 중...</div>;
+  }
+
+  if (error) {
+    return (
+      <div className="flex flex-1 flex-col items-center justify-center gap-3 px-4 text-center">
+        <p role="alert" aria-live="polite" className="text-destructive text-sm">
+          {error}
+        </p>
+        <button type="button" onClick={reload} className="text-accent text-xs underline underline-offset-2">
+          다시 시도
+        </button>
+      </div>
+    );
+  }
+
+  const allTasks = tasks ?? [];
+  const allWorkload = workload ?? [];
+
+  return (
+    <div className="flex flex-1 flex-col overflow-hidden">
+      <div className="grid flex-1 grid-cols-1 gap-4 overflow-auto p-5 lg:grid-cols-[1.1fr_1fr]">
+        <div className="flex flex-col gap-4">
+          {selectedTaskId === null ? (
+            <TaskListWidget tasks={allTasks} selectedTaskId={selectedTaskId} onSelect={setSelectedTaskId} />
+          ) : (
+            <TaskDetailPanel taskId={selectedTaskId} onBack={() => setSelectedTaskId(null)} onChanged={reload} />
+          )}
+        </div>
+        <div className="flex flex-col gap-4">
+          <DueSoonWidget tasks={allTasks} />
+          <OwnersWidget workload={allWorkload} />
+          <AttentionWidget tasks={allTasks} />
+        </div>
+      </div>
+      <AddTaskBar onAdded={reload} />
+    </div>
+  );
+}

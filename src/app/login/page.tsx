@@ -59,7 +59,7 @@ export default function LoginPage() {
       </div>
       <form onSubmit={handleSubmit} className="flex w-full max-w-xs flex-col gap-3">
         <Select value={selected} onValueChange={(value) => setSelected(value ?? "")}>
-          <SelectTrigger className="w-full">
+          <SelectTrigger aria-label="본인 이름" className="w-full">
             <SelectValue placeholder={users.length ? "이름 선택" : "불러오는 중..."} />
           </SelectTrigger>
           <SelectContent>
@@ -70,7 +70,11 @@ export default function LoginPage() {
             ))}
           </SelectContent>
         </Select>
-        {error && <p className="text-destructive text-sm">{error}</p>}
+        {error && (
+          <p role="alert" aria-live="polite" className="text-destructive text-sm">
+            {error}
+          </p>
+        )}
         <Button type="submit" disabled={!selected || submitting}>
           {submitting ? "확인 중..." : "시작하기"}
         </Button>
