@@ -17,10 +17,20 @@ const input = readStdin();
 const command = input?.tool_input?.command;
 
 if (typeof command === "string" && command.includes("backlog.json")) {
-  const isGit = /^\s*git\b/i.test(command);
-  const isCli = command.includes("backlog-cli");
+  // Split on shell command separators so each command in a chain (e.g.
+  // `cd x && git commit -m "...backlog.json..."`) is judged on its own —
+  // a segment just needs to itself be a git call or CLI call to be safe,
+  // even if an earlier/later segment (or the commit message text) also
+  // mentions backlog.json.
+  const segments = command.split(/&&|\|\||[;|]/);
+  const unsafe = segments.some((seg) => {
+    if (!seg.includes("backlog.json")) return false;
+    const isGit = /^\s*git\b/i.test(seg);
+    const isCli = seg.includes("backlog-cli");
+    return !isGit && !isCli;
+  });
 
-  if (!isGit && !isCli) {
+  if (unsafe) {
     console.log(
       JSON.stringify({
         hookSpecificOutput: {
