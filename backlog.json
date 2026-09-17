@@ -344,7 +344,7 @@
       "title": "대시보드 레이아웃/네비게이션",
       "description": "공통 레이아웃(헤더, 네비게이션)과 대시보드 페이지 뼈대를 구성한다.",
       "detail_doc": "tasks/T016.md",
-      "status": "in_progress",
+      "status": "done",
       "phase": "dashboard-ui",
       "order": 16,
       "estimated_minutes": 30,
@@ -359,7 +359,7 @@
       ],
       "blocked_reason": null,
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T04:02:16.876Z"
+      "updated_at": "2026-09-17T04:32:49.497Z"
     },
     {
       "id": "T017",
