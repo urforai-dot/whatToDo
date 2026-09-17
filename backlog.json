@@ -653,7 +653,7 @@
       "title": "프로덕션 배포 및 최종 점검",
       "description": "Vercel 프로덕션 배포를 진행하고 실제 도메인에서 최종 점검한다.",
       "detail_doc": "tasks/T030.md",
-      "status": "todo",
+      "status": "waiting",
       "phase": "deploy",
       "order": 30,
       "estimated_minutes": 30,
@@ -665,9 +665,9 @@
       "tags": [
         "deploy"
       ],
-      "blocked_reason": null,
+      "blocked_reason": "T003에서 초기 프로덕션 배포 완료, 이번 라운드 코드도 Vercel 프리뷰 빌드로 클린 확인. 최종 --prod 재배포+시나리오 점검은 T004/T029 이후.",
       "created_at": "2026-09-17T00:00:00+09:00",
-      "updated_at": "2026-09-17T00:00:00+09:00"
+      "updated_at": "2026-09-17T05:38:51.040Z"
     }
   ]
 }
